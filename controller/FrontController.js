@@ -15,7 +15,7 @@ class FrontController {
 
     static login = async (req, res) => {
         try {
-            res.render("login", { msg: req.flash('error') })     //render
+            res.render("login", { msg: req.flash('success') ,msg: req.flash('error')})     //render
         } catch (error) {
             console.log(error)
         }
@@ -92,7 +92,7 @@ class FrontController {
            // console.log(req.files.image)
             const file = req.files.image
             const imageUpload = await cloudinary.uploader.upload(file.tempFilePath,{
-                folder: "userprofile",
+                folder: "userimage",
             })
             console.log(imageUpload)
            
@@ -119,9 +119,10 @@ class FrontController {
 
                         })
                         await result.save()
+                        req.flash('success','Register Succefully Insert! Plz Login ')
                         res.redirect('/')
                     } else {
-                        req.flash('error', 'Password not Match')
+                        req.flash('error', 'Password and Confirm password not Match')
                         res.redirect('/register') //route path
 
                     }
