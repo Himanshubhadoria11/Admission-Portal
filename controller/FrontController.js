@@ -2,6 +2,7 @@ const UserModel = require('../models/user')
 const TeacherModel = require('../models/Teacher')
 const bcrypt = require('bcrypt')
 const cloudinary = require('cloudinary')
+const jwt =require('jsonwebtoken')
 
 
 cloudinary.config({
@@ -58,6 +59,10 @@ class FrontController {
             if (user != null) {
                 const isMatched = await bcrypt.compare(password , user.password)
                 if (isMatched) {
+                    //token
+                    const token = jwt.sign({ ID:user._id }, 'pninfosys123dhdjh');
+                    console.log(token)
+                   // res.cookie('token',token)
                     res.redirect('/home')
 
                 } else {
