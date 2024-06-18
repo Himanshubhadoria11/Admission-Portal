@@ -5,6 +5,10 @@ const port = 3000
 const web = require('./routes/web')
 const connectDb = require('./db/connectDb')
 
+const cookieParser=require('cookie-parser')
+
+app.use(cookieParser())
+
 
 
 //file upload

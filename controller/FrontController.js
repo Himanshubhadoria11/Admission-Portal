@@ -16,7 +16,7 @@ class FrontController {
 
     static login = async (req, res) => {
         try {
-            res.render("login", { msg: req.flash('success') ,msg: req.flash('error')})     //render
+            res.render("login", { message: req.flash('success') ,msg: req.flash('error')})     //render
         } catch (error) {
             console.log(error)
         }
@@ -31,6 +31,8 @@ class FrontController {
     }
     static home = async (req, res) => {
         try {
+            const{name,image} = req.Udata
+            console.log(name)
             res.render("home")
         } catch (error) {
             console.log(error)
@@ -61,8 +63,8 @@ class FrontController {
                 if (isMatched) {
                     //token
                     const token = jwt.sign({ ID:user._id }, 'pninfosys123dhdjh');
-                    console.log(token)
-                   // res.cookie('token',token)
+                   // console.log(token)
+                    res.cookie('token',token)
                     res.redirect('/home')
 
                 } else {
@@ -84,6 +86,7 @@ class FrontController {
 
     static logout = async (req, res) => {
         try {
+            res.clearCookie("token");
             res.redirect('/')
         } catch (error) {
             console.log(error)
