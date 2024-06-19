@@ -32,22 +32,24 @@ class FrontController {
     static home = async (req, res) => {
         try {
             const{name,image} = req.Udata
-            console.log(name)
-            res.render("home")
+           // console.log(name)
+            res.render("home",{n:name, i:image})
         } catch (error) {
             console.log(error)
         }
     }
     static about = async (req, res) => {
         try {
-            res.render("about")
+            const{name,image} = req.Udata
+            res.render("about",{n:name, i:image})
         } catch (error) {
             console.log(error)
         }
     }
     static contact = async (req, res) => {
         try {
-            res.render("contact")
+            const{name,image} = req.Udata
+            res.render("contact",{n:name, i:image})
         } catch (error) {
             console.log(error)
         }

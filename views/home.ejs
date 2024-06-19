@@ -93,7 +93,9 @@
                             <div class="card-body text-center">
                                 <h2>B.Tech</h2>
                                 <p class="card-text">B.Tech is a professional undergraduate engineering degree</p>
-                                <button type="button" class="btn text-dark">Register</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#btech">
+                                    Register
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -105,7 +107,9 @@
                             <div class="card-body text-center">
                                 <h2>BCA</h2>
                                 <p class="card-text">BCA is a three-year Bachelor's Degree in Computer Application</p>
-                                <button type="button" class="btn text-dark">Register</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bca">
+                                    Register
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -118,7 +122,9 @@
                                 <h2>MCA</h2>
                                 <p class="card-text">MCA is a professional post-graduation degree in Computer
                                     Application</p>
-                                <button type="button" class="btn text-dark">Register</button>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mca">
+                                        Register
+                                    </button>
                             </div>
                         </div>
                     </div>
@@ -128,5 +134,72 @@
 
     </section>
     <!-- End Courses -->
+
+       <!-- b.tech -->
+    <div class="modal fade" id="btech" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">B.Tech</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/course_insert" method="post">
+                    <div class="mb-3">
+                        <label for="">Name</label>
+                        <input type="text"  name="name" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Email</label>
+                        <input type="text"  name="email" class="form-control">
+                    </div>
+<div class="mb-3">
+                        <label for="">Phone no.</label>
+                        <input type="number" name="phone" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">DOB</label>
+                        <input type="date" name="dob" class="form-control">
+                    </div>
+
+<div class="mb-3">
+                        <label for="">Address</label>
+                        <textarea name="address" class="form-control"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Gender</label>
+                        <input type="radio" name="gender" value="male">Male
+                        <input type="radio" name="gender" value="female">Female
+                    </div>
+<div class="mb-3">
+                        <label for="">Education</label>
+                        <select name="education" class="form-control form-select">
+                            <option value="">select education</option>
+                            <option value="10">10th</option>
+                            <option value="12">12th</option>
+
+                        </select>
+                    </div>
+<div class="mb-3">
+                        <label for="">Course</label>
+                        <input type="text" value="btech" class="form-control" name="course">
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+
+                </form>
+
+              ...
+            </div>
+
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            
+          </div>
+        </div>
+    </div>
+
+    <!-- b.tech end -->
+
+
 
     <%- include('footer.ejs')   %> 
