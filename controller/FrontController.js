@@ -31,9 +31,9 @@ class FrontController {
     }
     static home = async (req, res) => {
         try {
-            const{name,image} = req.Udata
+            const{name,email,image} = req.Udata
            // console.log(name)
-            res.render("home",{n:name, i:image})
+            res.render("home",{n:name, i:image,e:email})
         } catch (error) {
             console.log(error)
         }

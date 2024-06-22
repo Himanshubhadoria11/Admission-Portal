@@ -147,11 +147,11 @@
                 <form action="/course_insert" method="post">
                     <div class="mb-3">
                         <label for="">Name</label>
-                        <input type="text"  name="name" class="form-control">
+                        <input type="text" value="<%= n %> " name="name" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="">Email</label>
-                        <input type="text"  name="email" class="form-control">
+                        <input type="text" value="<%= e %> "  name="email" class="form-control">
                     </div>
 <div class="mb-3">
                         <label for="">Phone no.</label>
@@ -182,13 +182,13 @@
                     </div>
 <div class="mb-3">
                         <label for="">Course</label>
-                        <input type="text" value="btech" class="form-control" name="course">
+                        <input type="text" readonly value="btech" class="form-control" name="course">
                     </div>
                     <button type="submit" class="btn btn-success">Submit</button>
 
                 </form>
 
-              ...
+              
             </div>
 
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
