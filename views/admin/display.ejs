@@ -2,6 +2,12 @@
 <br><br><br>
 <h1 class="bg-info text-center mt-5">Course Display</h1>
 <div class="container">
+    <% if(msg.length > 0){ %>
+        <div class="alert alert-success">
+            <!-- To Print -->
+            <%= msg %>
+        </div>
+    <% } %>
     <table class="table table-bordered text-center">
         <tr>
             <th>Id</th>
@@ -10,6 +16,8 @@
             <th>Course</th>
             <th>Status</th>
             <th>Message</th>
+            <th></th>
+            <th></th>
             <th>Action</th>
         </tr>
 
@@ -23,6 +31,23 @@
             <td><%= item.course %></td>
             <td><%= item.status %></td>
             <td><%= item.comment %></td>
+            <td>
+                <form action="/admin/updateStatus/<%= item.id %>" method="post">
+                <textarea name="comment" id=""></textarea>
+
+                
+
+
+            </td>
+            <td>
+                <button type="submit" class="btn btn-info text-white" name="status"
+                value="Approved">Approved</button>
+                <button type="submit" class="btn btn-danger" name="status"
+                value="Rejected">Rejected</button>
+
+            </form>
+            </td>
+       
             <td>
                 <a href="" class="btn btn-info">View</a>
                 <a href="" class="btn btn-success">Edit</a>

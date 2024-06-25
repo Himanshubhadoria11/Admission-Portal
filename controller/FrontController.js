@@ -3,6 +3,8 @@ const TeacherModel = require('../models/Teacher')
 const bcrypt = require('bcrypt')
 const cloudinary = require('cloudinary')
 const jwt =require('jsonwebtoken')
+const CourseModel =require('../models/course')
+
 
 
 cloudinary.config({
@@ -31,9 +33,13 @@ class FrontController {
     }
     static home = async (req, res) => {
         try {
-            const{name,email,image} = req.Udata
+            const{name,email,image,id} = req.Udata
+            const btech =await CourseModel.findOne({user_id:id,course:"btech"})
+            const bca =await CourseModel.findOne({user_id:id,course:"bca"})
+            const mca =await CourseModel.findOne({user_id:id,course:"mca"})
            // console.log(name)
-            res.render("home",{n:name, i:image,e:email})
+           res.render("home",{n:name, i:image,e:email,btech:btech,bca:bca,mca:mca})
+           // res.render("home",{n:name, i:image,e:email})
         } catch (error) {
             console.log(error)
         }

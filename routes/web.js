@@ -20,6 +20,7 @@ route.get('/courseDisplay',checkUserAuth, CourseController.courseDisplay)
 
 //admin controller
 route.get('/admin/display',checkUserAuth, AdminController.display)
+route.post('/admin/updateStatus/:id',checkUserAuth,AdminController.updateStatus)
 
 
 //insert data
