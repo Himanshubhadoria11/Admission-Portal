@@ -64,10 +64,24 @@ class FrontController {
                 const isMatched = await bcrypt.compare(password , user.password)
                 if (isMatched) {
                     //token
-                    const token = jwt.sign({ ID:user._id }, 'pninfosys123dhdjh');
+                    //const token = jwt.sign({ ID:user._id }, 'pninfosys123dhdjh');
+                   // console.log(token)
+                    //res.cookie('token',token)
+                    //res.redirect('/home')
+                    //multiple login
+                    if( user.role =="admin"){
+                 const token = jwt.sign({ ID:user._id }, 'pninfosys123dhdjh');
+                   // console.log(token)
+                    res.cookie('token',token)
+                    res.redirect('/admin/display')
+
+                    }
+                    if(user.role=="student"){
+                        const token = jwt.sign({ ID:user._id }, 'pninfosys123dhdjh');
                    // console.log(token)
                     res.cookie('token',token)
                     res.redirect('/home')
+                    }
 
                 } else {
                     req.flash('error', 'Email or password is not valid')

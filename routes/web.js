@@ -3,7 +3,8 @@ const FrontController = require('../controller/FrontController')
 const route = express.Router()
 const checkUserAuth=require('../middleware/auth')
 const CourseController = require('../controller/coursecontroller')
-//const CourseController =require('../controllers/CourseController')
+const AdminController = require('../controller/AdminController')
+
 
 //routing path http://localhost:3000/ (/)
 route.get('/', FrontController.login)
@@ -15,6 +16,12 @@ route.get('/contact',checkUserAuth, FrontController.contact)
 //course
 route.post('/course_insert',checkUserAuth, CourseController.courseInsert)
 route.get('/courseDisplay',checkUserAuth, CourseController.courseDisplay)
+
+
+//admin controller
+route.get('/admin/display',checkUserAuth, AdminController.display)
+
+
 //insert data
 route.post('/userInsert', FrontController.UserInsert)
 route.post('/verifyLogin', FrontController.verifyLogin)

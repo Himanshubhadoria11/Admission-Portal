@@ -27,6 +27,10 @@ password: {
             required: true
         }
     },
+    role:{
+        type : String,
+        default:"student"
+    }
     
     
 }, { timestamps: true})
