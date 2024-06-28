@@ -19,6 +19,9 @@ route.post('/updateProfile',checkUserAuth, FrontController.updateProfile)
 //course
 route.post('/course_insert',checkUserAuth, CourseController.courseInsert)
 route.get('/courseDisplay',checkUserAuth, CourseController.courseDisplay)
+route.get('/courseView/:id',checkUserAuth, CourseController.courseView)
+route.get('/courseEdit/:id',checkUserAuth, CourseController.courseEdit)
+route.post('/courseUpdate/:id',checkUserAuth, CourseController.courseUpdate)
 
 
 //admin controller
