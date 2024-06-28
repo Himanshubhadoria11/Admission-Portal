@@ -12,6 +12,9 @@ route.get('/register', FrontController.register)
 route.get('/home',checkUserAuth, FrontController.home)
 route.get('/about', checkUserAuth,FrontController.about)
 route.get('/contact',checkUserAuth, FrontController.contact)
+route.get('/profile',checkUserAuth, FrontController.profile)
+route.post('/changePassword',checkUserAuth, FrontController.changePassword)
+route.post('/updateProfile',checkUserAuth, FrontController.updateProfile)
 
 //course
 route.post('/course_insert',checkUserAuth, CourseController.courseInsert)
