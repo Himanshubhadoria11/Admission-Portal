@@ -1,7 +1,7 @@
 const express = require('express')
 // console.log(e)
 const app = express()
-const port = 3000
+const port = 4400
 const web = require('./routes/web')
 const connectDb = require('./db/connectDb')
 
@@ -48,5 +48,5 @@ app.set('view engine', 'ejs')
 
 
 
-// create server local host:3000
-app.listen(port, () => console.log("Server is Running local host:3000"))
+// create server local host:4400
+app.listen(port, () => console.log("Server is Running local host:4400"))

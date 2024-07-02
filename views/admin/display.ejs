@@ -34,6 +34,9 @@
             <td>
                 <form action="/admin/updateStatus/<%= item.id %>" method="post">
                 <textarea name="comment" id=""></textarea>
+                <input type="hidden" name="name" value="<%= item.name %>">
+                <input type="hidden" name="email" value="<%= item.email %>">
+                <input type="hidden" name="course" value="<%= item.course %>">
 
                 
 

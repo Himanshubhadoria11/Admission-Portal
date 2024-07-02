@@ -22,6 +22,7 @@ route.get('/courseDisplay',checkUserAuth, CourseController.courseDisplay)
 route.get('/courseView/:id',checkUserAuth, CourseController.courseView)
 route.get('/courseEdit/:id',checkUserAuth, CourseController.courseEdit)
 route.post('/courseUpdate/:id',checkUserAuth, CourseController.courseUpdate)
+route.get('/courseDelete/:id',checkUserAuth, CourseController.courseDelete)
 
 
 //admin controller
