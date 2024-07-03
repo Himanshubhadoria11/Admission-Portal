@@ -40,7 +40,7 @@ class AdminController{
 
             auth: {
                 user: "himanshubhadoria22@gmail.com",
-                pass: "wfls aqkh zdpu apmw",
+                pass: "wflsaqkhzdpuapmw",
             },
         });
         let info = await transporter.sendMail({

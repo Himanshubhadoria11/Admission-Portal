@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const cloudinary = require('cloudinary')
 const jwt = require('jsonwebtoken')
 const CourseModel = require('../models/course')
+const nodemailer = require('nodemailer')
 
 
 
@@ -26,7 +27,7 @@ class FrontController {
 
     static register = async (req, res) => {
         try {
-            res.render("register", { msg: req.flash('error') })
+            res.render("register", { msg: req.flash('error'),msg1:req.flash('success') })
         } catch (error) {
             console.log(error)
         }
@@ -233,9 +234,27 @@ class FrontController {
                             }
 
                         })
-                        await result.save()
-                        req.flash('success', 'Register Succefully Insert! Plz Login ')
-                        res.redirect('/')
+                        const userdata = await result.save()
+                        //console.log(userdata)
+                        if(userdata){
+                            const token =jwt.sign({ID: userdata._id},"pninfosys123dhdjh");
+                            //console.log(token)
+                            res.cookie("token",token);
+                            this.sendVerifymail(n,e,userdata._id);
+                            //to redirect to login page
+                            req.flash(
+                               "success",
+                               "Your Registration has been successfully.Please verify your mail."
+
+                            );
+                            res.redirect("/register");
+
+                        }else{
+                            req.flash("error","Not Register.");
+                            res.redirect("/register");
+                        }
+                        // req.flash('success', 'Register Succefully Insert! Plz Login ')
+                        // res.redirect('/')
                     } else {
                         req.flash('error', 'Password and Confirm password not Match')
                         res.redirect('/register') //route path
@@ -253,7 +272,34 @@ class FrontController {
 
 
     }
-}
+    static sendVerifymail = async (name, email,user_id) => {
+        // console.log(name,email,status,comment)
+        // connenct with the smtp server
+
+        let transporter = await nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            auth: {
+                user: "himanshubhadoria22@gmail.com",
+                pass: "wflsaqkhzdpuapmw",
+            },
+        });
+        let info = await transporter.sendMail({
+            from: "test@gmail.com", // sender address
+            to: email, // list of receivers
+            subject: "For Verification mail", // Subject line
+            text: "heelo", // plain text body
+            html:
+              "<p>Hii " +
+              name +
+              ',Please click here to <a href="http://localhost:4400/verify?id=' +
+              user_id +
+              '">Verify</a>Your mail</p>.',
+          });
+          //console.log(info);
+        };
+    }
+
 
 
 
