@@ -76,18 +76,21 @@ class FrontController {
                     //res.cookie('token',token)
                     //res.redirect('/home')
                     //multiple login
-                    if (user.role == "admin") {
+                    if (user.role == "admin" &&user.is_verified==1) {
                         const token = jwt.sign({ ID: user._id }, 'pninfosys123dhdjh');
                         // console.log(token)
                         res.cookie('token', token)
                         res.redirect('/admin/display')
 
                     }
-                    if (user.role == "student") {
+                    else if (user.role == "student" &&user.is_verified==1) {
                         const token = jwt.sign({ ID: user._id }, 'pninfosys123dhdjh');
                         // console.log(token)
                         res.cookie('token', token)
                         res.redirect('/home')
+                    }else{
+                        req.flash('error', 'Plz Email Verify')
+                    res.redirect('/')
                     }
 
                 } else {
@@ -298,6 +301,16 @@ class FrontController {
           });
           //console.log(info);
         };
+        static verifymail = async (req, res) => {
+            try {
+                await UserModel.findByIdAndUpdate(req.query.id,{
+                 is_verified:1   
+                })
+                res.redirect('/home')
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
 
 

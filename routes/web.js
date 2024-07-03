@@ -34,6 +34,7 @@ route.post('/admin/updateStatus/:id',checkUserAuth,AdminController.updateStatus)
 route.post('/userInsert', FrontController.UserInsert)
 route.post('/verifyLogin', FrontController.verifyLogin)
 route.get('/logout', FrontController.logout)
+route.get('/verify',FrontController.verifymail)
 
 
 module.exports = route
