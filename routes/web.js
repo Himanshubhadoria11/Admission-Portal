@@ -29,6 +29,11 @@ route.get('/courseDelete/:id',checkUserAuth, CourseController.courseDelete)
 route.get('/admin/display',checkUserAuth, AdminController.display)
 route.post('/admin/updateStatus/:id',checkUserAuth,AdminController.updateStatus)
 
+//forgot password
+route.post('/forgot_Password',FrontController.forgetPasswordVerify)
+route.get('/reset-password',FrontController.reset_Password)
+route.post('/reset_Password1',FrontController.reset_Password1)
+
 
 //insert data
 route.post('/userInsert', FrontController.UserInsert)

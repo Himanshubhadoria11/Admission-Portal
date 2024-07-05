@@ -32,9 +32,13 @@ password: {
         type : String,
         default:"student"
     },
+
     is_verified:{
         type : Number,
         default:0 
+    },
+    token:{
+        type:String,
     }
  
     
