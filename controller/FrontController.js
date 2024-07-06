@@ -35,12 +35,12 @@ class FrontController {
     }
     static home = async (req, res) => {
         try {
-            const { name, email, image, id } = req.Udata
+            const { name, email, image, id,role } = req.Udata
             const btech = await CourseModel.findOne({ user_id: id, course: "btech" })
             const bca = await CourseModel.findOne({ user_id: id, course: "bca" })
             const mca = await CourseModel.findOne({ user_id: id, course: "mca" })
             // console.log(name)
-            res.render("home", { n: name, i: image, e: email, btech: btech, bca: bca, mca: mca })
+            res.render("home", { n: name, i: image, e: email, btech: btech, bca: bca, mca: mca, role: role })
             // res.render("home",{n:name, i:image,e:email})
         } catch (error) {
             console.log(error)
@@ -48,16 +48,16 @@ class FrontController {
     }
     static about = async (req, res) => {
         try {
-            const { name, image } = req.Udata
-            res.render("about", { n: name, i: image })
+            const { name, image,role } = req.Udata
+            res.render("about", { n: name, i: image ,role:role})
         } catch (error) {
             console.log(error)
         }
     }
     static contact = async (req, res) => {
         try {
-            const { name, image } = req.Udata
-            res.render("contact", { n: name, i: image })
+            const { name, image,role } = req.Udata
+            res.render("contact", { n: name, i: image ,role:role})
         } catch (error) {
             console.log(error)
         }
@@ -81,7 +81,7 @@ class FrontController {
                         const token = jwt.sign({ ID: user._id }, 'pninfosys123dhdjh');
                         // console.log(token)
                         res.cookie('token', token)
-                        res.redirect('/admin/display')
+                        res.redirect('/home')
 
                     }
                     else if (user.role == "student" &&user.is_verified==1) {
@@ -113,8 +113,8 @@ class FrontController {
 
     static profile = async (req, res) => {
         try {
-            const { name, image, email } = req.Udata
-            res.render("profile", { n: name, i: image, e: email })
+            const { name, image, email,role } = req.Udata
+            res.render("profile", { n: name, i: image, e: email,role:role })
         } catch (error) {
             console.log(error)
         }

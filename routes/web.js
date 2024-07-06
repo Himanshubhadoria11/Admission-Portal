@@ -4,9 +4,10 @@ const route = express.Router()
 const checkUserAuth=require('../middleware/auth')
 const CourseController = require('../controller/coursecontroller')
 const AdminController = require('../controller/AdminController')
+const adminrole =require('../middleware/adminrole')
 
 
-//routing path http://localhost:3000/ (/)
+//routing path http://localhost:4400/ (/)
 route.get('/', FrontController.login)
 route.get('/register', FrontController.register)
 route.get('/home',checkUserAuth, FrontController.home)
@@ -26,8 +27,8 @@ route.get('/courseDelete/:id',checkUserAuth, CourseController.courseDelete)
 
 
 //admin controller
-route.get('/admin/display',checkUserAuth, AdminController.display)
-route.post('/admin/updateStatus/:id',checkUserAuth,AdminController.updateStatus)
+route.get('/admin/display',checkUserAuth,adminrole('admin'), AdminController.display)
+route.post('/admin/updateStatus/:id',checkUserAuth,adminrole('admin'),AdminController.updateStatus)
 
 //forgot password
 route.post('/forgot_Password',FrontController.forgetPasswordVerify)

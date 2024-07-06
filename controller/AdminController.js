@@ -5,9 +5,9 @@ class AdminController{
 
     static display = async (req,res)=>{
         try{
-            const {name,email,image,id}=req.Udata
+            const {name,email,image,id,role}=req.Udata
             const course =await CourseModel.find()
-            res.render('admin/display',{n:name,i:image,c:course,msg:req.flash('success')})
+            res.render('admin/display',{n:name,i:image,c:course,role:role,msg:req.flash('success')})
 
         }catch(error){
             console.log(error)

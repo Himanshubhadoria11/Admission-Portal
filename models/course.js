@@ -39,11 +39,11 @@ education: {
     },
     status:{
         type:String,
-        default:"Padding"
+        default:"Pending"
     },
 comment:{
         type:String,
-        default:"Padding"
+        default:"Pending"
     }
     
 }, { timestamps: true })

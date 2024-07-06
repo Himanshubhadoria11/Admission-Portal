@@ -29,15 +29,15 @@
         </div>
         <div class="mb-3">
             <label for="">Gender</label>
-            <input type="radio" name="gender" value="male">Male
-            <input type="radio" name="gender" value="female">Female
+            <input type="radio" name="gender" value="male" <%=c.gender=='male' ?'checked':'' %> >Male
+            <input type="radio" name="gender" value="female" <%=c.gender=='male' ?'checked':'' %> >Female
         </div>
 <div class="mb-3">
             <label for="">Education</label>
             <select name="education" class="form-control form-select">
-                <option value="">select education</option>
-                <option value="10">10th</option>
-                <option value="12">12th</option>
+                <!-- <option value="">select education</option> -->
+                <option value="10" <%=c.college =='10' ?'selected':'' %>>10th</option>
+                <option value="12" <%=c.college =='12' ?'selected':'' %>>12th</option>
 
             </select>
         </div>
