@@ -2,7 +2,7 @@ const express = require('express')
 const FrontController = require('../controller/FrontController')
 const route = express.Router()
 const checkUserAuth=require('../middleware/auth')
-const CourseController = require('../controller/coursecontroller')
+const CourseController = require('../controller/CourseController')
 const AdminController = require('../controller/AdminController')
 const adminrole =require('../middleware/adminrole')
 
