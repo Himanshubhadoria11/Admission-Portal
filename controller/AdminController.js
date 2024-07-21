@@ -1,3 +1,4 @@
+const ContactModel = require('../models/contact')
 const CourseModel = require('../models/course')
 const nodemailer = require('nodemailer')
 
@@ -53,6 +54,40 @@ class AdminController{
         });
     }
     // https://myaccount.google.com/apppasswords?
+
+    static contactInsert = async (req, res) => {
+        try {
+            //console.log(req.body)
+            const { name, email, address }
+                = req.body
+            const result = new ContactModel({
+                name: name,
+                email: email,
+                
+                address: address,
+                
+                user_id: req.Udata.id
+            })
+            await result.save()
+            this.sendEmail(name,email,address)
+            res.redirect('/contact')
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+
+    static contactDisplay = async (req, res) => {
+        try {
+            const { name, email, address, id,role ,image} = req.Udata
+            const contact = await ContactModel.find({ user_id: id })
+            console.log(contact)
+            res.render('admin/contactdisplay', { n: name, e:email, a:address,i:id,role:role,i:image,c:contact})
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
 }

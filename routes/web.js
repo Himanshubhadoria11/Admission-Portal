@@ -29,6 +29,8 @@ route.get('/courseDelete/:id',checkUserAuth, CourseController.courseDelete)
 //admin controller
 route.get('/admin/display',checkUserAuth,adminrole('admin'), AdminController.display)
 route.post('/admin/updateStatus/:id',checkUserAuth,adminrole('admin'),AdminController.updateStatus)
+route.post('/contact_insert',checkUserAuth, AdminController.contactInsert)
+route.get('/admin/contactdisplay',checkUserAuth,adminrole('admin'), AdminController.contactDisplay)
 
 //forgot password
 route.post('/forgot_Password',FrontController.forgetPasswordVerify)
